@@ -37,8 +37,8 @@ lista2=[]
 for x in range(0,len(lista1)):
     lista2.append(0)
 
-df=pd.read_csv("test.csv")
-df.replace({'predictie':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointestinal':2,'Colestază_cronică':3,'Reacție_la_medicamente':4,
+cx=pd.read_csv("test.csv")
+cx.replace({'predictie':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointestinal':2,'Colestază_cronică':3,'Reacție_la_medicamente':4,
 'Tulburări_ulcer':5,'HIV':6,'Diabet ':7,'Gastroenterită':8,'Astm':9,'Hipertensiune_arterială ':10,
 'Migrenă':11,'Spondiloza_cervicală':12,
 'Paralizie_hemoragie_cerebrală':13,'Icter':14,'Malarie':15,'Varicelă':16,'Febra':17,'Tifoidă':18,'Hepatita_A':19,
@@ -48,9 +48,9 @@ df.replace({'predictie':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointesti
 'Vertij':36,'Acne':37,'Infecția_tractului':38,'Psoriazis':39,
 'Infectia_pieli':40}},inplace=True)
 
-X= df[lista1]
+X= cx[lista1]
 
-y = df[["predictie"]]
+y = cx[["predictie"]]
 np.ravel(y)
 
 tr=pd.read_csv("testare.csv")

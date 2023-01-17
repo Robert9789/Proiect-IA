@@ -271,13 +271,13 @@ L7.grid(row=11, column=1)
 d = Button(root, text="Algoritmul DecisionTree", command=decisionTree_algoritm,bg="green",fg="blue")
 d.grid(row=8, column=3)
 
-fr = Button(root, text="Algoritmul Randomforest", command=RandomForest_algoritm,bg="green",fg="blue")
+fr = Button(root, text="Algoritmul RandomForest", command=RandomForest_algoritm,bg="green",fg="blue")
 fr.grid(row=9, column=3,padx=10)
 
 bc = Button(root, text="Algoritmul NaiveBayes", command=naiveBayes_algoritm,bg="green",fg="blue")
 bc.grid(row=10, column=3,padx=10)
 
-#textfileds
+
 h1 = Text(root, height=1, width=40,bg="white",fg="black")
 h1.grid(row=15, column=1, padx=10)
 

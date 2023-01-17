@@ -38,7 +38,7 @@ for x in range(0,len(lista1)):
     lista2.append(0)
 
 df=pd.read_csv("test.csv")
-df.replace({'prognosis':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointestinal':2,'Colestază_cronică':3,'Reacție_la_medicamente':4,
+df.replace({'predictie':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointestinal':2,'Colestază_cronică':3,'Reacție_la_medicamente':4,
 'Tulburări_ulcer':5,'HIV':6,'Diabet ':7,'Gastroenterită':8,'Astm':9,'Hipertensiune_arterială ':10,
 'Migrenă':11,'Spondiloza_cervicală':12,
 'Paralizie_hemoragie_cerebrală':13,'Icter':14,'Malarie':15,'Varicelă':16,'Febra':17,'Tifoidă':18,'Hepatita_A':19,
@@ -50,11 +50,11 @@ df.replace({'prognosis':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointesti
 
 X= df[lista1]
 
-y = df[["prognosis"]]
+y = df[["predictie"]]
 np.ravel(y)
 
 tr=pd.read_csv("testare.csv")
-tr.replace({'prognosis':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointestinal':2,'Colestază_cronică':3,'Reacție_la_medicamente':4,
+tr.replace({'predictie':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointestinal':2,'Colestază_cronică':3,'Reacție_la_medicamente':4,
 'Tulburări_ulcer':5,'HIV':6,'Diabet ':7,'Gastroenterită':8,'Astm':9,'Hipertensiune_arterială ':10,
 'Migrenă':11,'Spondiloza_cervicală':12,
 'Paralizie_hemoragie_cerebrală':13,'Icter':14,'Malarie':15,'Varicelă':16,'Febra':17,'Tifoidă':18,'Hepatita_A':19,
@@ -65,13 +65,12 @@ tr.replace({'prognosis':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointesti
 'Infectia_pieli':40}},inplace=True)
 
 X_test= tr[lista1]
-y_test = tr[["prognosis"]]
+y_test = tr[["predictie"]]
 np.ravel(y_test)
 
-def DecisionTree():
+def decisionTree_algoritm():
 
     from sklearn import tree
-
     clf3 = tree.DecisionTreeClassifier() 
     clf3 = clf3.fit(X,y)
 
@@ -108,7 +107,7 @@ def DecisionTree():
         t1.insert(END, "Not Found")
 
 
-def randomforest():
+def RandomForest_algoritm():
     from sklearn.ensemble import RandomForestClassifier
     clf4 = RandomForestClassifier()
     clf4 = clf4.fit(X,np.ravel(y))
@@ -145,7 +144,7 @@ def randomforest():
         t2.insert(END, "Not Found")
 
 
-def NaiveBayes():
+def naiveBayes_algoritm():
     from sklearn.naive_bayes import GaussianNB
     gnb = GaussianNB()
     gnb=gnb.fit(X,np.ravel(y))
@@ -201,7 +200,7 @@ Simptom7 = StringVar()
 Name = StringVar()
 
 
-w2 = Label(root, justify=CENTER, text="Predictia bolilor", fg="white", bg="blue")
+w2 = Label(root, justify=CENTER, text="Predictia afectiunilor", fg="white", bg="blue")
 w2.config(font=("Elephant", 32))
 w2.grid(row=1, column=0, columnspan=2, padx=100)
 w2 = Label(root, justify=CENTER, text="Proiect AI", fg="white", bg="blue")
@@ -274,13 +273,13 @@ S6En.grid(row=11, column=1)
 S7En = OptionMenu(root, Simptom5,*OPTIONS)
 S7En.grid(row=11, column=1)
 
-dst = Button(root, text="Algoritmul DecisionTree", command=DecisionTree,bg="green",fg="blue")
+dst = Button(root, text="Algoritmul DecisionTree", command=decisionTree_algoritm,bg="green",fg="blue")
 dst.grid(row=8, column=3)
 
-rnf = Button(root, text="Algoritmul Randomforest", command=randomforest,bg="green",fg="blue")
+rnf = Button(root, text="Algoritmul Randomforest", command=RandomForest_algoritm,bg="green",fg="blue")
 rnf.grid(row=9, column=3,padx=10)
 
-lr = Button(root, text="Algoritmul NaiveBayes", command=NaiveBayes,bg="green",fg="blue")
+lr = Button(root, text="Algoritmul NaiveBayes", command=naiveBayes_algoritm,bg="green",fg="blue")
 lr.grid(row=10, column=3,padx=10)
 
 #textfileds

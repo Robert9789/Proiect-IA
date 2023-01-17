@@ -1,6 +1,7 @@
 from tkinter import *
-import numpy as np
 import pandas as pd
+import numpy as np
+
 
 lista1=['dureri_de_spate','oboseala','durere_abdominală','durere_de_cap','febra','dureri',
 'îngălbenirea_ochilor','insuficiență_hiperactivă_acută','exces_fluid','umflarea_stomacului',
@@ -164,11 +165,11 @@ def naiveBayes_algoritm():
 
     input_test = [lista2]
     predict = gnb.predict(input_test)
-    predicted=predict[0]
+    pred=predict[0]
 
     h='no'
     for a in range(0,len(afectiunea)):
-        if(predicted == a):
+        if(pred == a):
             h='yes'
             break
 
@@ -178,7 +179,6 @@ def naiveBayes_algoritm():
     else:
         t3.delete("1.0", END)
         t3.insert(END, "Not Found")
-
 
 root = Tk()
 root.configure(background='green')

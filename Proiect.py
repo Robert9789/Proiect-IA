@@ -49,6 +49,7 @@ df.replace({'predictie':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointesti
 'Infectia_pieli':40}},inplace=True)
 
 X= df[lista1]
+
 y = df[["predictie"]]
 np.ravel(y)
 
@@ -70,25 +71,25 @@ np.ravel(y_test)
 def decisionTree_algoritm():
 
     from sklearn import tree
-    clf3 = tree.DecisionTreeClassifier() 
-    clf3 = clf3.fit(X,y)
+    v = tree.DecisionTreeClassifier() 
+    v = v.fit(X,y)
 
     from sklearn.metrics import accuracy_score
-    y_pred=clf3.predict(X_test)
+    y_pred=v.predict(X_test)
     print(accuracy_score(y_test, y_pred))
     print(accuracy_score(y_test, y_pred,normalize=False))
 
 
-    psymptoms = [Simptom1.get(),Simptom2.get(),Simptom3.get(),Simptom4.get(),Simptom5.get(),Simptom6.get(),Simptom7.get()]
+    simptome = [Simptom1.get(),Simptom2.get(),Simptom3.get(),Simptom4.get(),Simptom5.get()]
 
     for k in range(0,len(lista1)):
 
-        for z in psymptoms:
+        for z in simptome:
             if(z==lista1[k]):
                 lista2[k]=1
 
-    inputtest = [lista2]
-    predict = clf3.predict(inputtest)
+    input_test = [lista2]
+    predict = v.predict(input_test)
     predicted=predict[0]
 
     h='no'
@@ -118,15 +119,15 @@ def RandomForest_algoritm():
     print(accuracy_score(y_test, y_pred,normalize=False))
 
 
-    psymptoms = [Simptom1.get(),Simptom2.get(),Simptom3.get(),Simptom4.get(),Simptom5.get()]
+    simptome = [Simptom1.get(),Simptom2.get(),Simptom3.get(),Simptom4.get(),Simptom5.get()]
 
     for k in range(0,len(lista1)):
-        for z in psymptoms:
+        for z in simptome:
             if(z==lista1[k]):
                 lista2[k]=1
 
-    inputtest = [lista2]
-    predict = clf4.predict(inputtest)
+    input_test = [lista2]
+    predict = clf4.predict(input_test)
     predicted=predict[0]
 
     h='no'
@@ -155,14 +156,14 @@ def naiveBayes_algoritm():
     print(accuracy_score(y_test, y_pred,normalize=False))
 
 
-    psymptoms = [Simptom1.get(),Simptom2.get(),Simptom3.get(),Simptom4.get(),Simptom5.get()]
+    simptome = [Simptom1.get(),Simptom2.get(),Simptom3.get(),Simptom4.get(),Simptom5.get()]
     for k in range(0,len(lista1)):
-        for z in psymptoms:
+        for z in simptome:
             if(z==lista1[k]):
                 lista2[k]=1
 
-    inputtest = [lista2]
-    predict = gnb.predict(inputtest)
+    input_test = [lista2]
+    predict = gnb.predict(input_test)
     predicted=predict[0]
 
     h='no'
@@ -178,9 +179,9 @@ def naiveBayes_algoritm():
         t3.delete("1.0", END)
         t3.insert(END, "Not Found")
 
+
 root = Tk()
 root.configure(background='green')
-
 Simptom1 = StringVar()
 Simptom1.set(None)
 Simptom2 = StringVar()
@@ -196,95 +197,93 @@ Simptom6.set(None)
 Simptom7 = StringVar()
 Name = StringVar()
 
-w2 = Label(root, justify=CENTER, text="Predictia afectiunilor", fg="white", bg="blue")
-w2.config(font=("Elephant", 32))
-w2.grid(row=1, column=0, columnspan=2, padx=100)
-w2 = Label(root, justify=CENTER, text="Proiect AI", fg="white", bg="blue")
-w2.config(font=("Aharoni", 32))
-w2.grid(row=2, column=0, columnspan=2, padx=100)
+
+p = Label(root, justify=CENTER, text="Predictia afectiunilor", fg="white", bg="blue")
+p.config(font=("Elephant", 32))
+p.grid(row=1, column=0, columnspan=2, padx=100)
+p = Label(root, justify=CENTER, text="Proiect AI", fg="white", bg="blue")
+p.config(font=("Aharoni", 32))
+p.grid(row=2, column=0, columnspan=2, padx=100)
 
 
 NameLb = Label(root, text="Nume Prenume :", fg="yellow", bg="black")
 NameLb.grid(row=6, column=0, pady=15, sticky=W)
 
 
-S1Lb = Label(root, text="Simptom  1", fg="orange", bg="black")
-S1Lb.grid(row=7, column=0, pady=10, sticky=W)
+T1 = Label(root, text="Simptom  1", fg="orange", bg="black")
+T1.grid(row=7, column=0, pady=10, sticky=W)
 
-S2Lb = Label(root, text="Simptom 2", fg="orange", bg="black")
-S2Lb.grid(row=8, column=0, pady=10, sticky=W)
+T2 = Label(root, text="Simptom 2", fg="orange", bg="black")
+T2.grid(row=8, column=0, pady=10, sticky=W)
 
-S3Lb = Label(root, text="Simptom 3", fg="orange", bg="black")
-S3Lb.grid(row=9, column=0, pady=10, sticky=W)
+T3 = Label(root, text="Simptom 3", fg="orange", bg="black")
+T3.grid(row=9, column=0, pady=10, sticky=W)
 
-S4Lb = Label(root, text="Simptom 4", fg="orange", bg="black")
-S4Lb.grid(row=10, column=0, pady=10, sticky=W)
+T4 = Label(root, text="Simptom 4", fg="orange", bg="black")
+T4.grid(row=10, column=0, pady=10, sticky=W)
 
-S5Lb = Label(root, text="Simptom 5", fg="orange", bg="black")
-S5Lb.grid(row=11, column=0, pady=10, sticky=W)
+T5 = Label(root, text="Simptom 5", fg="orange", bg="black")
+T5.grid(row=11, column=0, pady=10, sticky=W)
 
-S5Lb = Label(root, text="Simptom 6", fg="orange", bg="black")
-S5Lb.grid(row=11, column=0, pady=10, sticky=W)
+T6 = Label(root, text="Simptom 6", fg="orange", bg="black")
+T6.grid(row=11, column=0, pady=10, sticky=W)
 
-S6Lb = Label(root, text="Simptom 6", fg="orange", bg="black")
-S6Lb.grid(row=11, column=0, pady=10, sticky=W)
+T7 = Label(root, text="Simptom 6", fg="orange", bg="black")
+T7.grid(row=11, column=0, pady=10, sticky=W)
 
-S7Lb = Label(root, text="Simptom 6", fg="orange", bg="black")
-S7Lb.grid(row=11, column=0, pady=10, sticky=W)
+ 
 
-lrLb = Label(root, text="Algoritmul DecisionTree", fg="white", bg="teal")
-lrLb.grid(row=15, column=0, pady=10,sticky=W)
+lp = Label(root, text="Algoritmul DecisionTree", fg="white", bg="teal")
+lp.grid(row=15, column=0, pady=10,sticky=W)
 
-ranfLb = Label(root, text="Algoritmul NaiveBayes", fg="white", bg="teal")
-ranfLb.grid(row=19, column=0, pady=10, sticky=W)
+bp = Label(root, text="Algoritmul NaiveBayes", fg="white", bg="teal")
+bp.grid(row=19, column=0, pady=10, sticky=W)
 
 destreeLb = Label(root, text="Algoritmul RandomForest", fg="white", bg="teal")
 destreeLb.grid(row=17, column=0, pady=10, sticky=W)
 
-
-
-OPTIONS = sorted(lista1)
+optiuni = sorted(lista1)
 
 NameEn = Entry(root, textvariable=Name)
 NameEn.grid(row=6, column=1)
 
-S1En = OptionMenu(root, Simptom1,*OPTIONS)
-S1En.grid(row=7, column=1)
+L1 = OptionMenu(root, Simptom1,*optiuni)
+L1.grid(row=7, column=1)
 
-S2En = OptionMenu(root, Simptom2,*OPTIONS)
-S2En.grid(row=8, column=1)
+L2 = OptionMenu(root, Simptom2,*optiuni)
+L2.grid(row=8, column=1)
 
-S3En = OptionMenu(root, Simptom3,*OPTIONS)
-S3En.grid(row=9, column=1)
+L3 = OptionMenu(root, Simptom3,*optiuni)
+L3.grid(row=9, column=1)
 
-S4En = OptionMenu(root, Simptom4,*OPTIONS)
-S4En.grid(row=10, column=1)
+L4 = OptionMenu(root, Simptom4,*optiuni)
+L4.grid(row=10, column=1)
 
-S5En = OptionMenu(root, Simptom5,*OPTIONS)
-S5En.grid(row=11, column=1)
+L5 = OptionMenu(root, Simptom5,*optiuni)
+L5.grid(row=11, column=1)
 
-S6En = OptionMenu(root, Simptom5,*OPTIONS)
-S6En.grid(row=11, column=1)
+L6 = OptionMenu(root, Simptom5,*optiuni)
+L6.grid(row=11, column=1)
 
-S7En = OptionMenu(root, Simptom5,*OPTIONS)
-S7En.grid(row=11, column=1)
+L7 = OptionMenu(root, Simptom5,*optiuni)
+L7.grid(row=11, column=1)
 
-dst = Button(root, text="Algoritmul DecisionTree", command=decisionTree_algoritm,bg="green",fg="blue")
-dst.grid(row=8, column=3)
+d = Button(root, text="Algoritmul DecisionTree", command=decisionTree_algoritm,bg="green",fg="blue")
+d.grid(row=8, column=3)
 
-rnf = Button(root, text="Algoritmul Randomforest", command=RandomForest_algoritm,bg="green",fg="blue")
-rnf.grid(row=9, column=3,padx=10)
+fr = Button(root, text="Algoritmul Randomforest", command=RandomForest_algoritm,bg="green",fg="blue")
+fr.grid(row=9, column=3,padx=10)
 
-lr = Button(root, text="Algoritmul NaiveBayes", command=naiveBayes_algoritm,bg="green",fg="blue")
-lr.grid(row=10, column=3,padx=10)
+bc = Button(root, text="Algoritmul NaiveBayes", command=naiveBayes_algoritm,bg="green",fg="blue")
+bc.grid(row=10, column=3,padx=10)
 
-t1 = Text(root, height=1, width=40,bg="white",fg="black")
-t1.grid(row=15, column=1, padx=10)
+#textfileds
+h1 = Text(root, height=1, width=40,bg="white",fg="black")
+h1.grid(row=15, column=1, padx=10)
 
-t2 = Text(root, height=1, width=40,bg="white",fg="black")
-t2.grid(row=17, column=1 , padx=10)
+h2 = Text(root, height=1, width=40,bg="white",fg="black")
+h2.grid(row=17, column=1 , padx=10)
 
-t3 = Text(root, height=1, width=40,bg="white",fg="black")
-t3.grid(row=19, column=1 , padx=10)
-
+h3 = Text(root, height=1, width=40,bg="white",fg="black")
+h3.grid(row=19, column=1 , padx=10)
 root.mainloop()

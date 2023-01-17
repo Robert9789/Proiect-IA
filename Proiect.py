@@ -49,7 +49,6 @@ df.replace({'predictie':{'Infecția_fungica':0,'Alergie':1,'Reflux_gastrointesti
 'Infectia_pieli':40}},inplace=True)
 
 X= df[lista1]
-
 y = df[["predictie"]]
 np.ravel(y)
 
@@ -80,7 +79,7 @@ def decisionTree_algoritm():
     print(accuracy_score(y_test, y_pred,normalize=False))
 
 
-    psymptoms = [Simptom1.get(),Simptom2.get(),Simptom3.get(),Simptom4.get(),Simptom5.get()]
+    psymptoms = [Simptom1.get(),Simptom2.get(),Simptom3.get(),Simptom4.get(),Simptom5.get(),Simptom6.get(),Simptom7.get()]
 
     for k in range(0,len(lista1)):
 
@@ -179,8 +178,6 @@ def naiveBayes_algoritm():
         t3.delete("1.0", END)
         t3.insert(END, "Not Found")
 
-
-
 root = Tk()
 root.configure(background='green')
 
@@ -198,7 +195,6 @@ Simptom6 = StringVar()
 Simptom6.set(None)
 Simptom7 = StringVar()
 Name = StringVar()
-
 
 w2 = Label(root, justify=CENTER, text="Predictia afectiunilor", fg="white", bg="blue")
 w2.config(font=("Elephant", 32))
@@ -282,7 +278,6 @@ rnf.grid(row=9, column=3,padx=10)
 lr = Button(root, text="Algoritmul NaiveBayes", command=naiveBayes_algoritm,bg="green",fg="blue")
 lr.grid(row=10, column=3,padx=10)
 
-#textfileds
 t1 = Text(root, height=1, width=40,bg="white",fg="black")
 t1.grid(row=15, column=1, padx=10)
 
